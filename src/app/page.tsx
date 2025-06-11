@@ -356,183 +356,348 @@ Transcript:
   };
 
   return (
-    <div className="p-10 text-center">
-      <h1 className="text-3xl mb-4">🎤 AI Speech Transcriber & Analysis</h1>
-
-      <div className="mb-6">
-        <h2 className="text-xl mb-2 font-semibold">Choose Your Practice Mode:</h2>
-        <div className="flex justify-center space-x-4">
-          <button
-            className={`px-6 py-3 rounded-lg text-white font-medium shadow-md transition-colors duration-200 ${
-              practiceMode === 'free' ? 'bg-blue-700 hover:bg-blue-800' : 'bg-blue-500 hover:bg-blue-600'
-            }`}
-            onClick={() => {
-              setPracticeMode('free');
-              setCurrentPrompt('');
-              setCustomPromptInput('');
-              setTranscript('');
-              setLiveTranscript('');
-              setAnalysis('');
-              setPauses([]);
-              setPaceData([]);
-              setVolumeData([]);
-              setAudioURL(null);
-            }}
-            disabled={recording}
-          >
-            Free Speech Mode
-          </button>
-          <button
-            className={`px-6 py-3 rounded-lg text-white font-medium shadow-md transition-colors duration-200 ${
-              practiceMode === 'scenario' ? 'bg-purple-700 hover:bg-purple-800' : 'bg-purple-500 hover:bg-purple-600'
-            }`}
-            onClick={() => {
-              setPracticeMode('scenario');
-              setCurrentPrompt(''); // Clear current prompt
-              setCustomPromptInput(''); // Clear custom input
-              setTranscript('');
-              setLiveTranscript('');
-              setAnalysis('');
-              setPauses([]);
-              setPaceData([]);
-              setVolumeData([]);
-              setAudioURL(null);
-            }}
-            disabled={recording}
-          >
-            Practice Prompts & Scenarios
-          </button>
+<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+  {/* Header Section */}
+  <div className="bg-white/80 backdrop-blur-sm border-b border-white/20 shadow-sm sticky top-0 z-10">
+    <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg">
+          <span className="text-2xl">🎤</span>
         </div>
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent mb-3">
+          AI Speech Transcriber & Analysis
+        </h1>
+        <p className="text-gray-600 text-lg font-medium">
+          Practice your speaking skills with real-time feedback and analysis
+        </p>
       </div>
+    </div>
+  </div>
 
-      {practiceMode === 'scenario' && (
-        <div className="mt-4 mb-6 max-w-xl mx-auto text-left p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
-          <h3 className="text-lg font-semibold mb-3">Select a Scenario or Enter Your Own:</h3>
+  <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
+    {/* Practice Mode Selection */}
+    <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Choose Your Practice Mode</h2>
+      
+      <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <button
+          className={`group relative overflow-hidden p-6 rounded-xl text-white font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 ${
+            practiceMode === 'free' 
+              ? 'bg-gradient-to-r from-blue-600 to-blue-700 shadow-blue-500/25' 
+              : 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700'
+          }`}
+          onClick={() => {
+            setPracticeMode('free');
+            setCurrentPrompt('');
+            setCustomPromptInput('');
+            setTranscript('');
+            setLiveTranscript('');
+            setAnalysis('');
+            setPauses([]);
+            setPaceData([]);
+            setVolumeData([]);
+            setAudioURL(null);
+          }}
+          disabled={recording}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative z-10">
+            <div className="text-2xl mb-2">💬</div>
+            <div className="text-lg font-bold mb-1">Free Speech Mode</div>
+            <div className="text-blue-100 text-sm">Practice without constraints</div>
+          </div>
+        </button>
+
+        <button
+          className={`group relative overflow-hidden p-6 rounded-xl text-white font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 ${
+            practiceMode === 'scenario' 
+              ? 'bg-gradient-to-r from-purple-600 to-purple-700 shadow-purple-500/25' 
+              : 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700'
+          }`}
+          onClick={() => {
+            setPracticeMode('scenario');
+            setCurrentPrompt('');
+            setCustomPromptInput('');
+            setTranscript('');
+            setLiveTranscript('');
+            setAnalysis('');
+            setPauses([]);
+            setPaceData([]);
+            setVolumeData([]);
+            setAudioURL(null);
+          }}
+          disabled={recording}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative z-10">
+            <div className="text-2xl mb-2">🎯</div>
+            <div className="text-lg font-bold mb-1">Practice Scenarios</div>
+            <div className="text-purple-100 text-sm">Guided practice sessions</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    {/* Scenario Selection */}
+    {practiceMode === 'scenario' && (
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+          Select Your Scenario
+        </h3>
+        
+        <div className="space-y-4">
           <select
-            className="block w-full p-2 border border-gray-300 rounded-md mb-3 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-4 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-200 text-gray-700 font-medium"
             onChange={handleScenarioChange}
             disabled={recording}
           >
             <option value="">-- Choose a Scenario --</option>
-            <option value="job_interview">Job Interview</option>
-            <option value="sales_pitch">Sales Pitch</option>
-            <option value="academic_presentation">Academic Presentation</option>
-            <option value="public_speaking">General Public Speaking</option>
-            <option value="custom">Custom Prompt</option>
+            <option value="job_interview">💼 Job Interview</option>
+            <option value="sales_pitch">📈 Sales Pitch</option>
+            <option value="academic_presentation">🎓 Academic Presentation</option>
+            <option value="public_speaking">🎤 General Public Speaking</option>
+            <option value="custom">✏️ Custom Prompt</option>
           </select>
 
-          {currentPrompt && currentPrompt !== customPromptInput && ( // Display pre-defined prompt if not custom
-            <p className="p-3 border border-dashed border-gray-400 bg-gray-50 rounded-md text-sm italic">
-              <strong className="text-gray-700">Your Prompt:</strong> {currentPrompt}
-            </p>
+          {currentPrompt && currentPrompt !== customPromptInput && (
+            <div className="p-6 bg-gradient-to-r from-purple-50 to-indigo-50 border-2 border-purple-200 rounded-xl">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-bold">P</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-purple-800 mb-2">Your Practice Prompt</h4>
+                  <p className="text-purple-700 leading-relaxed">{currentPrompt}</p>
+                </div>
+              </div>
+            </div>
           )}
 
-          {currentPrompt === customPromptInput && ( // Display custom prompt input if custom is selected
-            <div className="mt-3">
-              <label htmlFor="custom-prompt" className="block text-sm font-medium text-gray-700 mb-1">Enter your custom prompt:</label>
+          {currentPrompt === customPromptInput && (
+            <div className="space-y-3">
+              <label className="block text-sm font-bold text-gray-700">Create Your Custom Prompt</label>
               <textarea
-                id="custom-prompt"
-                className="block w-full p-2 border border-gray-300 rounded-md resize-y focus:ring-blue-500 focus:border-blue-500"
-                placeholder="E.g., Describe your ideal vacation."
+                className="w-full p-4 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-200 resize-none"
+                placeholder="Example: Describe your ideal vacation destination and explain why it appeals to you..."
                 value={customPromptInput}
                 onChange={handleCustomPromptChange}
-                rows={3}
+                rows={4}
                 disabled={recording}
-              ></textarea>
+              />
             </div>
           )}
         </div>
-      )}
+      </div>
+    )}
 
+    {/* Recording Control */}
+    <div className="text-center">
       <button
-        className={`px-8 py-4 rounded-full text-white text-xl font-bold shadow-lg transition-all duration-300 ${
-          recording ? 'bg-red-600 hover:bg-red-700 animate-pulse' : 'bg-green-600 hover:bg-green-700'
-        } ${!practiceMode && 'opacity-50 cursor-not-allowed'}`}
+        className={`group relative px-12 py-6 rounded-2xl text-white text-2xl font-bold shadow-2xl transition-all duration-300 transform hover:scale-105 ${
+          recording 
+            ? 'bg-gradient-to-r from-red-500 to-red-600 animate-pulse shadow-red-500/30' 
+            : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-green-500/30'
+        } ${!practiceMode && 'opacity-50 cursor-not-allowed hover:scale-100'}`}
         onClick={recording ? stopRecording : startRecording}
         disabled={!practiceMode || (practiceMode === 'scenario' && !currentPrompt && !customPromptInput)}
       >
-        {recording ? 'Stop Recording' : 'Start Recording'}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+        <div className="relative z-10 flex items-center space-x-3">
+          <span className="text-3xl">{recording ? '⏹' : '▶'}</span>
+          <span>{recording ? 'Stop Recording' : 'Start Recording'}</span>
+        </div>
       </button>
-      {!practiceMode && <p className="text-sm text-gray-500 mt-2">Please select a practice mode to begin.</p>}
-      {practiceMode === 'scenario' && !currentPrompt && !customPromptInput && (
-        <p className="text-sm text-gray-500 mt-2">Please select a scenario or enter a custom prompt.</p>
-      )}
 
+      {!practiceMode && (
+        <p className="text-gray-500 mt-4 bg-gray-100 px-4 py-2 rounded-lg inline-block">
+          Please select a practice mode to begin
+        </p>
+      )}
+      
+      {practiceMode === 'scenario' && !currentPrompt && !customPromptInput && (
+        <p className="text-purple-600 mt-4 bg-purple-50 px-4 py-2 rounded-lg inline-block border border-purple-200">
+          Please select a scenario or enter a custom prompt
+        </p>
+      )}
+    </div>
+
+    {/* Live Content Grid */}
+    <div className="grid lg:grid-cols-2 gap-8">
       {/* Camera Preview */}
       {cameraStream && (
-        <div className="mt-8 mx-auto" style={{ maxWidth: 320 }}>
-          <h2 className="text-xl font-bold mb-2">Camera Preview:</h2>
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            className="rounded-lg border-2 border-gray-300 shadow-md"
-            style={{ width: '100%', height: 'auto' }}
-          />
-        </div>
-      )}
-
-      {/* Audio Playback */}
-      {audioURL && (
-        <div className="mt-8 max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md border border-gray-200">
-          <h2 className="text-xl font-bold mb-3">Recorded Audio Playback:</h2>
-          <audio controls src={audioURL} className="w-full" />
-        </div>
-      )}
-
-      {/* Real-time Transcript */}
-      {recording && (
-        <div className="mt-8 text-left max-w-xl mx-auto p-4 bg-blue-50 rounded-lg shadow-md border border-blue-200">
-          <h2 className="text-xl font-bold mb-3 text-blue-800">Live Transcript:</h2>
-          <div className="mt-2 border p-4 bg-white rounded-md whitespace-pre-wrap text-gray-800 break-words">
-            {highlightFillerWords(liveTranscript)}
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+            Camera Preview
+          </h2>
+          <div className="relative">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-auto rounded-xl shadow-lg border-4 border-gray-200"
+            />
+            <div className="absolute top-3 right-3 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
           </div>
         </div>
       )}
 
-      {/* Pace & Volume Visualization */}
+      {/* Live Transcript */}
       {recording && (
-        <div className="mt-8 max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md border border-gray-200">
-          <h2 className="text-xl font-bold mb-3">Speech Pace & Volume</h2>
-          <PaceVolumeChart paceData={paceData} volumeData={volumeData} />
-          <div className="text-sm text-gray-500 mt-2">Blue: Words per minute, Orange: Volume</div>
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 backdrop-blur-sm rounded-2xl shadow-xl border-2 border-blue-200 p-6">
+          <h2 className="text-xl font-bold text-blue-800 mb-4 flex items-center">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 animate-pulse"></span>
+            Live Transcript
+          </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-blue-200 min-h-[200px] max-h-[400px] overflow-y-auto">
+            <div className="text-gray-800 whitespace-pre-wrap break-words leading-relaxed">
+              {highlightFillerWords(liveTranscript) || (
+                <span className="text-gray-400 italic">Start speaking to see live transcription...</span>
+              )}
+            </div>
+          </div>
         </div>
       )}
+    </div>
 
-      <div className="mt-8 text-left max-w-xl mx-auto p-4 bg-gray-100 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-xl font-bold mb-3">Transcript:</h2>
-        <div className="mt-2 border p-4 bg-white rounded-md whitespace-pre-wrap text-gray-800 break-words">
-          {highlightFillerWords(transcript)}
+    {/* Audio Playback */}
+    {audioURL && (
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+        <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+          Recorded Audio Playback
+        </h2>
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
+          <audio controls src={audioURL} className="w-full h-12" />
         </div>
-        <p className="mt-3 text-base text-gray-700">
-          Filler words count: <strong className="text-red-600">{countFillerWords(transcript)}</strong>
-        </p>
+      </div>
+    )}
+
+    {/* Pace & Volume Visualization */}
+    {recording && (
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+        <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
+          Speech Pace & Volume Analysis
+        </h2>
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
+          <PaceVolumeChart paceData={paceData} volumeData={volumeData} />
+          <div className="flex items-center justify-center space-x-6 mt-4 text-sm font-medium">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+              <span className="text-gray-600">Words per minute</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+              <span className="text-gray-600">Volume level</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* Results Grid */}
+    <div className="grid lg:grid-cols-2 gap-8">
+      {/* Transcript */}
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+        <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <span className="w-2 h-2 bg-gray-500 rounded-full mr-3"></span>
+          Final Transcript
+        </h2>
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200 min-h-[200px] max-h-[400px] overflow-y-auto">
+          <div className="text-gray-800 whitespace-pre-wrap break-words leading-relaxed">
+            {highlightFillerWords(transcript) || (
+              <span className="text-gray-400 italic">Your transcript will appear here after recording...</span>
+            )}
+          </div>
+        </div>
+        <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border-2 border-red-200">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">!</span>
+            </div>
+            <div>
+              <h4 className="font-bold text-red-800">Filler Words Detected</h4>
+              <p className="text-red-700">
+                <span className="text-2xl font-bold">{countFillerWords(transcript)}</span> filler words found
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="mt-8 text-left max-w-xl mx-auto p-4 bg-gray-100 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-xl font-bold mb-3">Detected Pauses:</h2>
-        {pauses.length > 0 ? (
-          <ul className="list-disc ml-6 text-gray-800">
-            {pauses.map((pause, idx) => (
-              <li key={idx} className="mb-1">
-                Pause from <strong className="text-blue-600">{typeof pause.start === 'number' ? pause.start.toFixed(2) : '0.00'}s</strong> to <strong className="text-blue-600">{typeof pause.end === 'number' ? pause.end.toFixed(2) : '0.00'}s</strong>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="italic text-gray-500">No significant pauses detected yet.</p>
-        )}
-      </div>
-
-      <div className="mt-8 text-left max-w-xl mx-auto p-4 bg-yellow-50 rounded-lg shadow-md border border-yellow-200">
-        <h2 className="text-xl font-bold mb-3 text-yellow-800">Presentation Analysis:</h2>
-        {isAnalyzing ? (
-          <p className="italic text-gray-500">Analyzing...</p>
-        ) : (
-          <pre className="mt-2 border p-4 bg-white rounded-md whitespace-pre-wrap text-gray-800 font-sans leading-relaxed">{analysis}</pre>
-        )}
+      {/* Pauses */}
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 p-8">
+        <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+          <span className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+          Detected Pauses
+        </h2>
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200 min-h-[200px] max-h-[400px] overflow-y-auto">
+          {pauses.length > 0 ? (
+            <div className="space-y-3">
+              {pauses.map((pause, idx) => (
+                <div key={idx} className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      {idx + 1}
+                    </div>
+                    <span className="text-gray-700 font-medium">Pause detected</span>
+                  </div>
+                  <div className="text-right text-sm">
+                    <div className="text-blue-600 font-bold">
+                      {typeof pause.start === 'number' ? pause.start.toFixed(2) : '0.00'}s - {typeof pause.end === 'number' ? pause.end.toFixed(2) : '0.00'}s
+                    </div>
+                    <div className="text-gray-500">
+                      Duration: {typeof pause.end === 'number' && typeof pause.start === 'number' ? (pause.end - pause.start).toFixed(2) : '0.00'}s
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">⏸</span>
+              </div>
+              <p className="text-gray-500 italic">No significant pauses detected yet</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
+
+    {/* Analysis */}
+    <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-2xl shadow-xl border-2 border-yellow-200 p-8">
+      <h2 className="text-2xl font-bold text-yellow-800 mb-6 flex items-center">
+        <span className="w-3 h-3 bg-yellow-500 rounded-full mr-4"></span>
+        AI Presentation Analysis
+      </h2>
+      
+      {isAnalyzing ? (
+        <div className="flex items-center justify-center py-12">
+          <div className="flex items-center space-x-4">
+            <div className="w-8 h-8 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-yellow-700 font-medium text-lg">Analyzing your speech...</span>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-yellow-200 shadow-inner">
+          {analysis ? (
+            <pre className="text-gray-800 font-sans leading-relaxed whitespace-pre-wrap">{analysis}</pre>
+          ) : (
+            <div className="text-center py-8">
+              <div className="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🤖</span>
+              </div>
+              <p className="text-gray-500 italic">Your AI analysis will appear here after recording</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
   );
 }
