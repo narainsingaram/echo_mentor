@@ -11,7 +11,7 @@ app.use(cors());
 
 const upload = multer({ dest: 'uploads/' });
 
-const GOOGLE_CLOUD_KEY = 'your-google-cloud-key.json'; // path to your key
+const GOOGLE_CLOUD_KEY = path.join(__dirname, 'google-cloud-key.json');
 const BUCKET_NAME = 'echomentor-audio-bucket'; // replace with your actual bucket name
 
 const speechClient = new SpeechClient({ keyFilename: GOOGLE_CLOUD_KEY });

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react'; // Added useMemo
 import dynamic from 'next/dynamic';
 
 const PaceVolumeChart = dynamic(() => import('./PaceVolumeChart'), { ssr: false });
@@ -41,23 +41,39 @@ export default function Home() {
   // Speech recognition refs
   const recognitionRef = useRef<any>(null);
 
-  // Filler words
-  const fillerWords = ['um', 'uh', 'like', 'you know', 'so', 'actually'];
+  // Word Categories
+  const fillerWords = useMemo(() => ['um', 'uh', 'like', 'you know', 'so', 'actually', 'basically', 'I mean', 'right', 'okay'], []);
+  const positiveWords = useMemo(() => ['excellent', 'great', 'fantastic', 'confident', 'strong', 'clearly', 'effective', 'beneficial', 'advantage', 'succeeded', 'achieved'], []);
+  const weakeningWords = useMemo(() => ['just', 'maybe', 'I think', 'sort of', 'kind of', 'perhaps', 'possibly', 'could be', 'might be', 'I guess'], []);
 
-  // Highlight filler words
-  const highlightFillerWords = (text: string) => {
+  // Highlight all types of words
+  const highlightTranscript = (text: string | null) => {
     if (!text) return null;
-    const regex = new RegExp(`\\b(${fillerWords.join('|')})\\b`, 'gi');
-    const parts = text.split(regex);
-    return parts.map((part, index) => {
-      if (fillerWords.some(fw => fw.toLowerCase() === part.toLowerCase())) {
+
+    const words = text.split(/\b/); // Split by word boundaries to keep delimiters
+
+    return words.map((word, index) => {
+      const lowerCaseWord = word.toLowerCase();
+      if (fillerWords.includes(lowerCaseWord)) {
         return (
-          <mark key={index} style={{ backgroundColor: 'yellow', fontWeight: 'bold' }}>
-            {part}
+          <mark key={index} style={{ backgroundColor: '#FFD700', fontWeight: 'bold', borderRadius: '3px', padding: '0 2px' }}> {/* Gold for filler */}
+            {word}
+          </mark>
+        );
+      } else if (positiveWords.includes(lowerCaseWord)) {
+        return (
+          <mark key={index} style={{ backgroundColor: '#90EE90', fontWeight: 'bold', borderRadius: '3px', padding: '0 2px' }}> {/* Light Green for positive */}
+            {word}
+          </mark>
+        );
+      } else if (weakeningWords.includes(lowerCaseWord)) {
+        return (
+          <mark key={index} style={{ backgroundColor: '#ADD8E6', fontWeight: 'bold', borderRadius: '3px', padding: '0 2px' }}> {/* Light Blue for weakening */}
+            {word}
           </mark>
         );
       } else {
-        return part;
+        return word;
       }
     });
   };
@@ -72,15 +88,17 @@ export default function Home() {
 
   // Analyze transcript with Deepseek model
   const analyzeTranscript = async (text: string) => {
-    const apiKey = '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';
+    const apiKey = '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'; // Replace with your actual API key
     const url = 'https://openrouter.ai/api/v1/chat/completions';
 
     let prompt = `
 Analyze the following transcript of a presentation and provide constructive feedback on these points:
-- Use of filler words or hesitation
-- Clarity and pacing
-- Engagement and tone
-- Overall presentation strengths and areas to improve
+- **Use of filler words or hesitation**: Identify specific instances and suggest alternatives.
+- **Clarity and pacing**: Comment on how easy it was to understand the message and the natural flow of speech.
+- **Engagement and tone**: Assess the speaker's ability to maintain audience interest and the overall emotional quality of the speech.
+- **Use of strong/positive language**: Identify instances where the speaker used confident or impactful language.
+- **Use of weakening language**: Point out phrases that might diminish confidence or assertiveness.
+- **Overall presentation strengths and areas to improve**: Summarize the key takeaways.
 `;
 
     if (practiceMode === 'scenario' && currentPrompt) {
@@ -112,7 +130,7 @@ Transcript:
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'deepseek/deepseek-r1-0528-qwen3-8b:free',
+          model: 'deepseek/deepseek-r1-0528-qwen3-8b:free', // Using the specified model
           messages: [
             {
               role: 'user',
@@ -370,6 +388,7 @@ Transcript:
         <p className="text-gray-600 text-lg font-medium">
           Practice your speaking skills with real-time feedback and analysis
         </p>
+        <p className="bg-amber-200 text-amber-800 text-md w-3/5 rounded-2xl m-auto font-bold px-3 py-2 mt-4">Created by: Narain Singaram</p>
       </div>
     </div>
   </div>
@@ -400,12 +419,16 @@ Transcript:
           }}
           disabled={recording}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative z-10">
-            <div className="text-2xl mb-2">💬</div>
-            <div className="text-lg font-bold mb-1">Free Speech Mode</div>
-            <div className="text-blue-100 text-sm">Practice without constraints</div>
+          {/* Hover overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+          {/* Content */}
+          <div className="relative z-10 text-white">
+            <div className="text-3xl mb-3">💬</div>
+            <div className="text-xl font-semibold mb-1">Free Speech Mode</div>
+            <div className="text-sm text-blue-100">Practice without constraints</div>
           </div>
+
         </button>
 
         <button
@@ -428,11 +451,14 @@ Transcript:
           }}
           disabled={recording}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative z-10">
-            <div className="text-2xl mb-2">🎯</div>
-            <div className="text-lg font-bold mb-1">Practice Scenarios</div>
-            <div className="text-purple-100 text-sm">Guided practice sessions</div>
+          {/* Hover overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+          {/* Content */}
+          <div className="relative z-10 text-white">
+            <div className="text-3xl mb-3">🎯</div>
+            <div className="text-xl font-semibold mb-1">Practice Scenarios</div>
+            <div className="text-sm text-purple-200">Guided practice sessions</div>
           </div>
         </button>
       </div>
@@ -494,20 +520,26 @@ Transcript:
     {/* Recording Control */}
     <div className="text-center">
       <button
-        className={`group relative px-12 py-6 rounded-2xl text-white text-2xl font-bold shadow-2xl transition-all duration-300 transform hover:scale-105 ${
-          recording 
-            ? 'bg-gradient-to-r from-red-500 to-red-600 animate-pulse shadow-red-500/30' 
-            : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-green-500/30'
-        } ${!practiceMode && 'opacity-50 cursor-not-allowed hover:scale-100'}`}
+        className={`group relative px-12 py-6 rounded-3xl text-white text-2xl font-semibold transition-all duration-300 ease-in-out transform ${
+          recording
+            ? 'bg-gradient-to-r from-red-500 to-red-600 animate-pulse shadow-[0_0_25px_5px_rgba(239,68,68,0.4)]'
+            : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-[0_0_25px_5px_rgba(34,197,94,0.3)]'
+        } ${!practiceMode && 'opacity-50 cursor-not-allowed hover:scale-100'} hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-white/30`}
         onClick={recording ? stopRecording : startRecording}
         disabled={!practiceMode || (practiceMode === 'scenario' && !currentPrompt && !customPromptInput)}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-        <div className="relative z-10 flex items-center space-x-3">
-          <span className="text-3xl">{recording ? '⏹' : '▶'}</span>
-          <span>{recording ? 'Stop Recording' : 'Start Recording'}</span>
+        {/* Overlay shine on hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none backdrop-blur-sm"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center space-x-4">
+          <span className={`text-4xl transition-transform duration-300 ${recording ? 'animate-pulse' : 'group-hover:scale-110'}`}>
+            {recording ? '⏹' : '▶'}
+          </span>
+          <span className="tracking-wide">{recording ? 'Stop Recording' : 'Start Recording'}</span>
         </div>
       </button>
+
 
       {!practiceMode && (
         <p className="text-gray-500 mt-4 bg-gray-100 px-4 py-2 rounded-lg inline-block">
@@ -553,7 +585,7 @@ Transcript:
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-blue-200 min-h-[200px] max-h-[400px] overflow-y-auto">
             <div className="text-gray-800 whitespace-pre-wrap break-words leading-relaxed">
-              {highlightFillerWords(liveTranscript) || (
+              {highlightTranscript(liveTranscript) || (
                 <span className="text-gray-400 italic">Start speaking to see live transcription...</span>
               )}
             </div>
@@ -608,23 +640,25 @@ Transcript:
         </h2>
         <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200 min-h-[200px] max-h-[400px] overflow-y-auto">
           <div className="text-gray-800 whitespace-pre-wrap break-words leading-relaxed">
-            {highlightFillerWords(transcript) || (
+            {highlightTranscript(transcript) || (
               <span className="text-gray-400 italic">Your transcript will appear here after recording...</span>
             )}
           </div>
-        </div>
-        <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border-2 border-red-200">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">!</span>
+          {transcript && (
+            <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border-2 border-red-200">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">!</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-red-800">Filler Words Detected</h4>
+                  <p className="text-red-700">
+                    <span className="text-2xl font-bold">{countFillerWords(transcript)}</span> filler words found
+                  </p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-red-800">Filler Words Detected</h4>
-              <p className="text-red-700">
-                <span className="text-2xl font-bold">{countFillerWords(transcript)}</span> filler words found
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
