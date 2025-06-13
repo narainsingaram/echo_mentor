@@ -2,17 +2,31 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Mic, Brain, BarChart3, Eye, Zap, Target, Users, Star, ArrowRight, CheckCircle, Play, Pause } from 'lucide-react';
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import LoginButton from './components/LoginButton';
 
 const EchoMentorLanding = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [scrollY, setScrollY] = useState(0);
 
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      // If already logged in, redirect to main page
+      router.push("/main"); // change to your main page route
+    }
+  }, [session, router]);
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   const features = [
     {
@@ -113,6 +127,8 @@ const EchoMentorLanding = () => {
             <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold hover:from-cyan-400 hover:to-purple-500 transition-all transform hover:scale-105">
               Try Free
             </button>
+            
+            <LoginButton/>
           </div>
         </div>
       </nav>
