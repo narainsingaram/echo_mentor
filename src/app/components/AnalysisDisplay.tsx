@@ -12,7 +12,7 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, isAnalyzing
   return (
     <div className="relative min-h-[500px] overflow-hidden">
       {/* Animated Background Grid */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
         
         {/* Floating Orbs */}
@@ -32,7 +32,7 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, isAnalyzing
               <div className="w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
             </div>
             <h2 className="text-3xl font-black bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent tracking-tight">
-              Neural Analysis Engine
+              AI Analysis
             </h2>
           </div>
           <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>

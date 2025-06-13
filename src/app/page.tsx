@@ -410,10 +410,10 @@ Transcript:
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial from-pink-500/10 to-transparent rounded-full blur-3xl animate-pulse delay-500"></div>
         
         {/* Animated Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping delay-700"></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-pink-400 rounded-full animate-ping delay-300"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-blue-400 rounded-full animate-ping delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full"></div>
+        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-pink-400 rounded-full"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-blue-400 rounded-full"></div>
       </div>
 
       {/* Header Section */}

@@ -45,7 +45,7 @@ const PracticeModeSelector: React.FC<PracticeModeSelectorProps> = ({
           <div className="inline-flex items-center space-x-3 mb-4">
             <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
             <h2 className="text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
-              Neural Training Protocol
+              Enhance Your Speech
             </h2>
             <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse delay-500"></div>
           </div>
