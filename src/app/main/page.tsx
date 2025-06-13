@@ -423,169 +423,156 @@ Transcript:
   }
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Dynamic Grid */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDgwIDAgTCAwIDAgMCA4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCIvPjwvc3ZnPg==')] opacity-40"></div>
-        
-        {/* Floating Orbs */}
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-radial from-cyan-500/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-32 right-32 w-96 h-96 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial from-pink-500/10 to-transparent rounded-full blur-3xl animate-pulse delay-500"></div>
-        
-        {/* Animated Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full"></div>
-        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-pink-400 rounded-full"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-blue-400 rounded-full"></div>
-      </div>
+<div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 relative overflow-hidden">
+  {/* Background Elements */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDgwIDAgTCAwIDAgMCA4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCIvPjwvc3ZnPg==')] opacity-40"></div>
+    <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-radial from-cyan-500/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
+    <div className="absolute bottom-32 right-32 w-96 h-96 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-radial from-pink-500/10 to-transparent rounded-full blur-3xl animate-pulse delay-500"></div>
+  </div>
 
-      {/* Header Section */}
-      <div className="relative z-10 backdrop-blur-xl bg-black/10 border-b border-white/10 sticky top-0">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="text-center space-y-6">
-            {/* Icon */}
-            <div className="relative inline-block">
-              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-2xl">
-                <span className="text-4xl">🧠</span>
-              </div>
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full blur-xl animate-pulse"></div>
-            </div>
-            
-            {/* Title */}
-            <div className="space-y-2">
-              <h1 className="text-6xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
-                EchoMentor
-              </h1>
-              <p className="text-white/70 text-xl font-medium tracking-wide">
-                Advanced AI-powered communication/presentation enhancement app
-              </p>
-            </div>
-            
-            {/* Creator Badge */}
-            <div className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-2xl backdrop-blur-sm">
-              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
-              <span className="text-amber-200 font-semibold tracking-wide">
-                Created by Narain Singaram
-              </span>
-              <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse delay-500"></div>
-            </div>
+  {/* Main Content */}
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header Section */}
+    <header className="backdrop-blur-xl bg-black/10 border-b border-white/10 sticky top-0 py-8">
+      <div className="text-center space-y-4">
+        {/* App Logo/Icon */}
+        <div className="relative inline-block">
+          <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-xl">
+            <span className="text-3xl">🧠</span>
+          </div>
+          <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full blur-xl animate-pulse"></div>
+        </div>
+        
+        {/* App Title */}
+        <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
+          EchoMentor
+        </h1>
+        <p className="text-white/70 text-lg font-medium">
+          AI-powered communication coach
+        </p>
 
-            Welcome, {session.user?.name || session.user?.email}!
-
+        {/* User Info */}
+        <div className="flex items-center justify-center space-x-4">
+          {session.user?.image && (
             <img
-              src={session.user?.image || ""}
+              src={session.user.image}
               alt="Profile"
-              className="w-10 h-10 rounded-full border"
-            />  
-            
-            <LoginButton></LoginButton>
+              className="w-8 h-8 rounded-full border border-white/20"
+            />
+          )}
+          <span className="text-white/80">
+            {session.user?.name || session.user?.email}
+          </span>
+          <LoginButton />
+        </div>
+      </div>
+    </header>
 
-            
-            {/* Animated Divider */}
-            <div className="flex justify-center pt-4">
-              <div className="w-40 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    {/* Main App Sections */}
+    <main className="space-y-8 py-8">
+      {/* Control Panel */}
+      <section className="bg-black/20 backdrop-blur-md border border-white/10 rounded-xl p-6 space-y-6">
+        <h2 className="text-xl font-semibold text-white/90">Practice Settings</h2>
+        
+        {/* Practice Mode Selection */}
+        <div className="space-y-4">
+          <PracticeModeSelector
+            practiceMode={practiceMode}
+            setPracticeMode={setPracticeMode}
+            recording={recording}
+            resetAllStates={resetAllStates}
+          />
+          
+          {/* Scenario Selection */}
+          {practiceMode === 'scenario' && (
+            <ScenarioSelector
+              currentPrompt={currentPrompt}
+              customPromptInput={customPromptInput}
+              handleScenarioChange={handleScenarioChange}
+              handleCustomPromptChange={handleCustomPromptChange}
+              recording={recording}
+            />
+          )}
+        </div>
+        
+        {/* Recording Controls */}
+        <RecordingControls
+          recording={recording}
+          startRecording={startRecording}
+          stopRecording={stopRecording}
+          practiceMode={practiceMode}
+          currentPrompt={currentPrompt}
+          customPromptInput={customPromptInput}
+        />
+      </section>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 space-y-12">
-        {/* Practice Mode Selection */}
-        <PracticeModeSelector
-          practiceMode={practiceMode}
-          setPracticeMode={setPracticeMode}
-          recording={recording}
-          resetAllStates={resetAllStates}
-        />
+      {/* Live Feedback Section */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold text-white/90">Live Feedback</h2>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Camera Preview */}
+          {cameraStream && <CameraPreview videoRef={videoRef} />}
 
-        {/* Scenario Selection */}
-        {practiceMode === 'scenario' && (
-          <ScenarioSelector
-            currentPrompt={currentPrompt}
-            customPromptInput={customPromptInput}
-            handleScenarioChange={handleScenarioChange}
-            handleCustomPromptChange={handleCustomPromptChange}
-            recording={recording}
-          />
-        )}
+          {/* Live Transcript */}
+          {recording && (
+            <LiveTranscriptDisplay
+              liveTranscript={liveTranscript}
+              highlightTranscript={highlightTranscript}
+            />
+          )}
+        </div>
 
-        {/* Recording Control */}
-        <RecordingControls
-          recording={recording}
-          startRecording={startRecording}
-          stopRecording={stopRecording}
-          practiceMode={practiceMode}
-          currentPrompt={currentPrompt}
-          customPromptInput={customPromptInput}
-        />
+        {/* Audio Playback */}
+        {audioURL && <AudioPlayback audioURL={audioURL} />}
+      </section>
 
-        {/* Live Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Camera Preview */}
-          {cameraStream && <CameraPreview videoRef={videoRef} />}
+      {/* Analytics Section */}
+      {(recording || paceData.length > 0 || volumeData.length > 0) && (
+        <section className="bg-gradient-to-br from-emerald-950/50 to-cyan-950/50 border border-white/10 rounded-xl p-6 backdrop-blur-md">
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="w-2.5 h-2.5 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full animate-pulse"></div>
+            <h2 className="text-xl font-semibold text-white/90">Speech Analytics</h2>
+          </div>
+          
+          <PaceVolumeChart paceData={paceData} volumeData={volumeData} />
+          
+          <div className="flex justify-center space-x-8 mt-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
+              <span className="text-white/80 text-sm">Speech Pace</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-gradient-to-r from-orange-400 to-red-400 rounded-full animate-pulse delay-300"></div>
+              <span className="text-white/80 text-sm">Volume Level</span>
+            </div>
+          </div>
+        </section>
+      )}
 
-          {/* Live Transcript */}
-          {recording && (
-            <LiveTranscriptDisplay
-              liveTranscript={liveTranscript}
-              highlightTranscript={highlightTranscript}
-            />
-          )}
-        </div>
+      {/* Results Section */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold text-white/90">Analysis Results</h2>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Transcript */}
+          <FinalTranscriptDisplay
+            transcript={transcript}
+            highlightTranscript={highlightTranscript}
+            countFillerWords={countFillerWords}
+          />
 
-        {/* Audio Playback */}
-        {audioURL && <AudioPlayback audioURL={audioURL} />}
+          {/* Pauses */}
+          <DetectedPausesDisplay pauses={pauses} />
+        </div>
 
-        {/* Pace & Volume Visualization */}
-        {(recording || paceData.length > 0 || volumeData.length > 0) && (
-          <div className="relative overflow-hidden p-1">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-teal-950/90 to-cyan-950/90 rounded-3xl">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cG9seWdvbiBpZD0idHJpIiBwb2ludHM9IjIwLDAgNDAsNDAgMCw0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvZGVmcz48dXNlIGhyZWY9IiN0cmkiLz48L3N2Zz4=')] opacity-30"></div>
-            </div>
-            
-            <div className="relative backdrop-blur-xl bg-black/20 border border-white/10 rounded-3xl shadow-2xl p-8">
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="w-3 h-3 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full animate-pulse"></div>
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">
-                  Neural Pattern Analytics
-                </h2>
-              </div>
-              
-              <div className="bg-black/30 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-                <PaceVolumeChart paceData={paceData} volumeData={volumeData} />
-                <div className="flex items-center justify-center space-x-8 mt-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
-                    <span className="text-white/80 font-medium tracking-wide">Speech Velocity</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-gradient-to-r from-orange-400 to-red-400 rounded-full animate-pulse delay-300"></div>
-                    <span className="text-white/80 font-medium tracking-wide">Audio Amplitude</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Results Grid */}
-        <div className="grid">
-          {/* Transcript */}
-          <FinalTranscriptDisplay
-            transcript={transcript}
-            highlightTranscript={highlightTranscript}
-            countFillerWords={countFillerWords}
-          />
-
-          {/* Pauses */}
-          <DetectedPausesDisplay pauses={pauses} />
-        </div>
-
-        {/* Analysis */}
-        <AnalysisDisplay analysis={analysis} isAnalyzing={isAnalyzing} />
-      </div>
-    </div>
+        {/* AI Analysis */}
+        <AnalysisDisplay analysis={analysis} isAnalyzing={isAnalyzing} />
+      </section>
+    </main>
+  </div>
+</div>
   );
 }
