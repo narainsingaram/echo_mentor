@@ -23,40 +23,23 @@ const PracticeModeSelector: React.FC<PracticeModeSelectorProps> = ({
   return (
     <div className="relative overflow-hidden p-1">
       {/* Dynamic Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-purple-950/90 to-pink-950/90 rounded-3xl">
-        {/* Geometric Pattern Overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iaGV4IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Im0zMCAwIDI2IDE1djMwbC0yNiAxNS0yNi0xNXYtMzB6IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNoZXgpIi8+PC9zdmc+')] opacity-60"></div>
-        
-        {/* Animated Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-pink-400 rounded-full animate-ping delay-1000"></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping delay-500"></div>
-        
-        {/* Flowing Gradients */}
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-radial from-cyan-500/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-radial from-pink-500/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
 
       {/* Main Container */}
-      <div className="relative backdrop-blur-xl bg-black/20 border border-white/10 rounded-3xl shadow-2xl shadow-black/50 p-8">
+      <div className="relative backdrop-blur-xl bg-black/40 border border-white/10 rounded-3xl shadow-2xl shadow-black/50 p-8">
         
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center space-x-3 mb-4">
-            <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
             <h2 className="text-4xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
               Enhance Your Speech
             </h2>
-            <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse delay-500"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full delay-500"></div>
           </div>
           <p className="text-white/60 text-sm tracking-widest uppercase font-medium">
             Select Your Enhancement Mode
           </p>
           
-          {/* Animated Divider */}
-          <div className="flex justify-center mt-4">
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
-          </div>
         </div>
 
         {/* Mode Selection Grid */}
@@ -77,8 +60,8 @@ const PracticeModeSelector: React.FC<PracticeModeSelectorProps> = ({
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             
             {/* Floating Orbs */}
-            <div className="absolute top-4 right-4 w-3 h-3 bg-cyan-400/30 rounded-full animate-bounce"></div>
-            <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-400/30 rounded-full animate-bounce delay-300"></div>
+            <div className="absolute top-4 right-4 w-3 h-3 bg-cyan-400/30 rounded-full "></div>
+            <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-400/30 rounded-full  delay-300"></div>
             
             {/* Content */}
             <div className="relative z-10 space-y-6">
@@ -129,8 +112,8 @@ const PracticeModeSelector: React.FC<PracticeModeSelectorProps> = ({
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             
             {/* Floating Orbs */}
-            <div className="absolute top-4 right-4 w-3 h-3 bg-purple-400/30 rounded-full animate-bounce delay-150"></div>
-            <div className="absolute bottom-4 left-4 w-2 h-2 bg-pink-400/30 rounded-full animate-bounce delay-500"></div>
+            <div className="absolute top-4 right-4 w-3 h-3 bg-purple-400/30 rounded-full  delay-150"></div>
+            <div className="absolute bottom-4 left-4 w-2 h-2 bg-pink-400/30 rounded-full  delay-500"></div>
             
             {/* Content */}
             <div className="relative z-10 space-y-6">

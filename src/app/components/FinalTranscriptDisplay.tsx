@@ -27,8 +27,8 @@ const FinalTranscriptDisplay: React.FC<FinalTranscriptDisplayProps> = ({
         <div className="relative p-8 pb-6">
           <div className="flex items-center space-x-4 mb-2">
             <div className="relative">
-              <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
-              <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-ping opacity-75"></div>
+              <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
+              <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-75"></div>
             </div>
             <h2 className="text-2xl font-black bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent tracking-wide">
               FINAL TRANSCRIPT
@@ -36,7 +36,7 @@ const FinalTranscriptDisplay: React.FC<FinalTranscriptDisplayProps> = ({
           </div>
           
           {/* Animated underline */}
-          <div className="h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent animate-pulse"></div>
+          <div className="h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent"></div>
         </div>
 
         {/* Content area with enhanced styling */}
@@ -51,7 +51,7 @@ const FinalTranscriptDisplay: React.FC<FinalTranscriptDisplayProps> = ({
                   <div className="flex items-center justify-center h-full">
                     <div className="text-center space-y-4">
                       <div className="relative">
-                        <div className="w-16 h-16 border-4 border-purple-400/30 border-t-purple-400 rounded-full animate-spin mx-auto"></div>
+                        <div className="w-16 h-16 border-4 border-purple-400/30 border-t-purple-400 rounded-full mx-auto"></div>
                         <div className="absolute inset-0 w-16 h-16 border-4 border-pink-400/20 border-t-pink-400/50 rounded-full animate-spin mx-auto delay-150"></div>
                       </div>
                       <span className="text-purple-200/60 italic text-xl font-light">
