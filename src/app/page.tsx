@@ -431,10 +431,10 @@ Transcript:
             {/* Title */}
             <div className="space-y-2">
               <h1 className="text-6xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
-                Neural Speech Engine
+                EchoMentor
               </h1>
               <p className="text-white/70 text-xl font-medium tracking-wide">
-                Advanced AI-powered communication enhancement protocol
+                Advanced AI-powered communication/presentation enhancement app
               </p>
             </div>
             
