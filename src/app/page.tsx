@@ -442,7 +442,7 @@ Transcript:
             <div className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/30 rounded-2xl backdrop-blur-sm">
               <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
               <span className="text-amber-200 font-semibold tracking-wide">
-                Neural Architecture by Narain Singaram
+                Created by Narain Singaram
               </span>
               <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse delay-500"></div>
             </div>
