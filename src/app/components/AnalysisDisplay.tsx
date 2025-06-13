@@ -16,8 +16,8 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, isAnalyzing
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#8b5cf6_1px,transparent_1px)] [background-size:32px_32px]"></div>
 
         {/* Pulsing Aura Effects */}
-        <div className="absolute top-[10%] left-[5%] w-80 h-80 bg-fuchsia-500 opacity-20 blur-3xl rounded-full animate-pulse"></div>
-        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-cyan-400 opacity-10 blur-2xl rounded-full animate-pulse"></div>
+        <div className="absolute top-[10%] left-[5%] w-80 h-80 bg-fuchsia-500/40 opacity-20 blur-3xl rounded-full animate-pulse"></div>
+        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-cyan-400/20 opacity-10 blur-2xl rounded-full animate-pulse"></div>
         <div className="absolute top-[40%] right-[25%] w-40 h-40 bg-indigo-500 opacity-30 blur-2xl rounded-full animate-ping"></div>
       </div>
 
@@ -90,19 +90,19 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, isAnalyzing
                     </p>
                   ),
                   strong: ({ children }) => (
-                    <strong className="font-bold text-cyan-300">
+                    <strong className="font-extrabold text-slate-200">
                       {children}
                     </strong>
                   ),
                   em: ({ children }) => (
-                    <em className="italic text-purple-300">
+                    <em className="italic text-slate-300">
                       {children}
                     </em>
                   ),
                   li: ({ children }) => (
                     <li className="flex items-start gap-2">
-                      <span className="mt-2 w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-fuchsia-400 rounded-full flex-shrink-0"></span>
-                      <span>{children}</span>
+                      <span className="mt-2 w-1.5 h-1.5 bg-slate-500 rounded-full flex-shrink-0"></span>
+                      <span className='text-white/90'>{children}</span>
                     </li>
                   ),
                   blockquote: ({ children }) => (
