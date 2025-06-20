@@ -72,15 +72,6 @@ const EchoMentorLanding = () => {
     }
   ];
 
-  const ScrollIndicator = () => (
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div className="flex flex-col items-center space-y-2">
-        <span className="text-white/60 text-sm font-medium">Scroll to explore</span>
-        <ChevronDown className="w-6 h-6 text-cyan-400" />
-      </div>
-    </div>
-  );
-
   const ParallaxOrb = ({ className, delay = 0 }) => (
     <div 
       className={`absolute rounded-full blur-3xl animate-pulse ${className}`}
@@ -124,9 +115,6 @@ const EchoMentorLanding = () => {
             <a href="#features" className="text-white/80 hover:text-cyan-400 transition-colors font-medium">Features</a>
             <a href="#testimonials" className="text-white/80 hover:text-cyan-400 transition-colors font-medium">Reviews</a>
             <a href="#pricing" className="text-white/80 hover:text-cyan-400 transition-colors font-medium">Pricing</a>
-            <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold hover:from-cyan-400 hover:to-purple-500 transition-all transform hover:scale-105">
-              Try Free
-            </button>
             
             <LoginButton/>
           </div>
@@ -157,12 +145,7 @@ const EchoMentorLanding = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <button className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl text-white font-bold text-lg hover:from-cyan-400 hover:to-purple-500 transition-all transform hover:scale-105 shadow-2xl flex items-center space-x-3">
-              <Zap className="w-6 h-6" />
-              <span>Start Free Trial</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            
+            <LoginButton/>
             <button 
               onClick={() => setIsVideoPlaying(!isVideoPlaying)}
               className="group px-8 py-4 bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl text-white font-semibold text-lg hover:bg-black/40 transition-all flex items-center space-x-3"
@@ -189,7 +172,6 @@ const EchoMentorLanding = () => {
           )}
         </div>
         
-        <ScrollIndicator />
       </section>
 
       {/* Features Section */}
@@ -334,11 +316,7 @@ const EchoMentorLanding = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl text-white font-bold text-lg hover:from-cyan-400 hover:to-purple-500 transition-all transform hover:scale-105 shadow-2xl flex items-center space-x-3">
-                  <Zap className="w-6 h-6" />
-                  <span>Start Your Free Trial</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <LoginButton/>
                 
                 <div className="flex items-center space-x-3 text-white/60">
                   <CheckCircle className="w-5 h-5 text-green-400" />

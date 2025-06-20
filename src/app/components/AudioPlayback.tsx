@@ -83,7 +83,7 @@ const AudioPlayback: React.FC<AudioPlaybackProps> = ({ audioURL }) => {
 
         {/* Header */}
         <h2 className="text-3xl font-black bg-gradient-to-r from-white via-green-200 to-emerald-300 bg-clip-text text-transparent mb-8 tracking-tight">
-          🎧 AI-ENHANCED AUDIO PLAYER
+          🎧 AUDIO PLAYER
         </h2>
 
         {/* Simulated Waveform */}
