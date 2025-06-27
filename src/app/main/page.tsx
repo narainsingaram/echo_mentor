@@ -115,6 +115,8 @@ Analyze the following transcript of a presentation and provide constructive feed
 - **Use of strong/positive language**: Identify instances where the speaker used confident or impactful language.
 - **Use of weakening language**: Point out phrases that might diminish confidence or assertiveness.
 - **Overall presentation strengths and areas to improve**: Summarize the key takeaways.
+
+FULL ANALYSIS PLEASE. VERY DETAILED
 `;
 
     if (practiceMode === 'scenario' && currentPrompt) {
