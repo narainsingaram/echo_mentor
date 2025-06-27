@@ -104,7 +104,7 @@ export default function Home() {
 
   // Analyze transcript with Deepseek model
   const analyzeTranscript = useCallback(async (text: string) => {
-    const apiKey = process.env.DEEPSEEK_API_KEY;
+    const apiKey = process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY;
     const url = 'https://openrouter.ai/api/v1/chat/completions';
 
     let prompt = `
