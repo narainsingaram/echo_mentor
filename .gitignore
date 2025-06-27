@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+google-cloud-key.jsongoogle-cloud-key.json
+google-cloud-key.json

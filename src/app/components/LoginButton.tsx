@@ -8,7 +8,6 @@ export default function LoginButton() {
   if (session) {
     return (
       <div className="flex items-center space-x-4">
-        <p className="text-gray-700 text-sm">Signed in as <span className="font-semibold">{session.user?.email}</span></p>
         <button
           onClick={() => signOut()}
           className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md shadow-md transition"

@@ -7,10 +7,14 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
+import { useSession } from "next-auth/react";
+
 
 import data from "./data.json"
 
 export default function Page() {
+  const { data: session, status } = useSession();
+
   return (
     <SidebarProvider
       style={

@@ -4,6 +4,14 @@ import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+import { motion, AnimatePresence } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
 // Import components
 import PracticeModeSelector from '../components/PracticeModeSelector';
@@ -96,7 +104,7 @@ export default function Home() {
 
   // Analyze transcript with Deepseek model
   const analyzeTranscript = useCallback(async (text: string) => {
-    const apiKey = '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';
+    const apiKey = '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';
     const url = 'https://openrouter.ai/api/v1/chat/completions';
 
     let prompt = `
@@ -432,7 +440,17 @@ Transcript:
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 relative overflow-hidden">
+    <SidebarProvider
+    style={
+      {
+        "--sidebar-width": "calc(var(--spacing) * 72)",
+        "--header-height": "calc(var(--spacing) * 12)",
+      } as React.CSSProperties
+    }
+  >
+    <AppSidebar variant="inset" />
+    <SidebarInset>
+    <div className="min-h-screen rounded-2xl bg-gradient-to-br from-slate-950 via-purple-950 to-indigo-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDgwIDAgTCAwIDAgMCA4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCIvPjwvc3ZnPg==')] opacity-40"></div>
@@ -444,35 +462,47 @@ Transcript:
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <header className="backdrop-blur-xl bg-black/10 border-b border-white/10 sticky top-0 py-8">
-          <div className="text-center space-y-4">
-            <div className="relative inline-block">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-xl">
-                <span className="text-3xl">🧠</span>
-              </div>
-              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full blur-xl animate-pulse"></div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent tracking-tight">
-              EchoMentor
-            </h1>
-            <p className="text-white/70 text-lg font-medium">
-              AI-powered communication coach
-            </p>
-            <div className="flex items-center justify-center space-x-4">
-              {session.user?.image && (
-                <img
-                  src={session.user.image}
-                  alt="Profile"
-                  className="w-8 h-8 rounded-full border border-white/20"
-                />
-              )}
-              <span className="text-white/80">
-                {session.user?.name || session.user?.email}
-              </span>
-              <LoginButton />
-            </div>
+        <header className="backdrop-blur-xl bg-black/10 border-b border-white/10 sticky top-0 py-4">
+          <div className="text-center space-y-2">
           </div>
         </header>
+
+        <section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-8 text-white"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-4">
+              <Badge className="bg-white/20 text-white hover:bg-white/30 rounded-xl">Premium</Badge>
+              <h2 className="text-3xl font-bold">👋 Welcome to EchoMentor, {session.user?.name?.split(" ")[0]}</h2>
+              <p className="max-w-[600px] text-white/80">
+                Practice your presentation and speaking capabilities with <b>🧠 EchoMentor</b>. <br></br>Get personalized feedback on your communication skills and improve your presentation.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button className="rounded-2xl bg-white text-indigo-700 hover:bg-white/90">
+                  Explore Below
+                </Button>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                className="relative h-40 w-40"
+              >
+                <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-md" />
+                <div className="absolute inset-4 rounded-full bg-white/20" />
+                <div className="absolute inset-8 rounded-full bg-white/30" />
+                <div className="absolute inset-12 rounded-full bg-white/40" />
+                <div className="absolute inset-16 rounded-full bg-white/50" />
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
         {/* Main App Sections */}
         <main className="space-y-8 py-8">
@@ -587,5 +617,7 @@ Transcript:
         </main>
       </div>
     </div>
+    </SidebarInset>
+    </SidebarProvider>
   );
 }
