@@ -96,7 +96,7 @@ export default function Home() {
 
   // Analyze transcript with Deepseek model
   const analyzeTranscript = useCallback(async (text: string) => {
-    const apiKey = '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';
+    const apiKey = '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';
     const url = 'https://openrouter.ai/api/v1/chat/completions';
 
     let prompt = `
@@ -149,7 +149,7 @@ Transcript:
       });
 
       const data = await response.json();
-      setAnalysis(data.choices?.[0]?.message?.content ?? 'No analysis received.');
+      setAnalysis(data.choices?.[0]?.message?.content ?? 'API is currently overloaded.');
     } catch (err) {
       console.error('Error analyzing transcript:', err);
       setAnalysis('Failed to analyze transcript.');
